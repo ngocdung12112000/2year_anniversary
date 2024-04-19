@@ -262,6 +262,12 @@
         }
         // Go to the next or previous page.
         pagethrough(direction) {
+            if(this.current == 0) {
+                const audio = document.getElementById("music");
+                if(!audio.ended) {
+                    audio.play();
+                }
+            }
             if ( this.isAnimating || direction === 'next' && this.current === this.slidesTotal-1 || direction === 'prev' && this.current === 0 ) {
                 return false;
             }
